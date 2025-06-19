@@ -34,9 +34,9 @@ function App() {
 
   // Simulate AI response (replace this with actual AI API call)
   const getAIResponse = (userMessage) => {
-    // Simple responses for demonstration
+    // Simple responses for demonstration - in a real app, you'd use userMessage to generate contextual responses
     const responses = [
-      "That's an interesting question! Let me think about that...",
+      `That's an interesting question about "${userMessage.toLowerCase()}"! Let me think about that...`,
       "I understand what you're asking. Here's my perspective...",
       "Thanks for sharing that with me. I'd be happy to help!",
       "That's a great point. Have you considered...",
