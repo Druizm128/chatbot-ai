@@ -126,6 +126,25 @@ docker-clean:
 	@echo "Cleaning up Docker system..."
 	docker system prune -f
 
+# CI/CD Commands
+.PHONY: ci-test
+ci-test:
+	@echo "Running CI tests locally..."
+	npm ci
+	npm run lint
+	npm run build
+	docker build -t chatbot-test .
+	docker rmi chatbot-test
+
+.PHONY: ci-security
+ci-security:
+	@echo "Running security checks..."
+	npm audit --audit-level=high
+
+.PHONY: ci-full
+ci-full: ci-security ci-test
+	@echo "Full CI pipeline completed locally"
+
 # Show help
 .PHONY: help
 help:
@@ -155,6 +174,10 @@ help:
 	@echo "  lint           - Run ESLint"
 	@echo "  build-local    - Build for production locally"
 	@echo "  preview        - Preview production build"
+	@echo ""
+	@echo "  ci-test        - Run CI pipeline locally"
+	@echo "  ci-security    - Run security audit"
+	@echo "  ci-full        - Run full CI pipeline locally"
 	@echo ""
 	@echo "Utility Commands:"
 	@echo "  docker-clean   - Clean up Docker system"
