@@ -48,10 +48,18 @@ npm run dev
 
 ## Available Scripts
 
+### Development Scripts
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build the project for production
 - `npm run preview` - Preview the production build locally
 - `npm run lint` - Run ESLint to check code quality
+
+### Docker & Make Commands
+- `make run` - Build and run Docker container
+- `make stop` - Stop the Docker container
+- `make logs` - View container logs
+- `make rebuild` - Clean rebuild and restart
+- `make help` - Show all available commands
 
 ## Project Structure
 
